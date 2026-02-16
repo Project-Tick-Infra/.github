@@ -1,101 +1,209 @@
 # Project Tick
 
-**Disciplined open-source software focused on long-term maintainability, reproducible builds, and infrastructure that does not rot over time.**
+**Disciplined open-source engineering focused on long-term maintainability, architectural clarity, and reproducible infrastructure.**
 
-Project Tick is not a collection of random repositories.
-It is an opinionated effort to build and maintain software the way open-source projects *should* be maintained, even years later.
+Project Tick is not a loose federation of repositories.
+It is a deliberately structured software ecosystem with clearly defined boundaries, responsibilities, and governance.
 
----
+## Mission
 
-## Why Project Tick Exists
+Project Tick exists to build software that:
 
-Many open-source projects fail for the same reasons:
+* remains maintainable years later
+* documents its architectural decisions
+* treats infrastructure as part of the product
+* prioritizes determinism and reproducibility
+* enforces technical standards consistently
 
-* unclear technical direction
-* rushed architectural decisions
-* neglected CI, packaging, and release infrastructure
-* undocumented changes and silent breakage
+We reject velocity without discipline.
 
-Project Tick exists to counter those failure modes.
+## Ecosystem Structure
 
-We make decisions explicit, document them, automate everything that can be automated, and deliberately favor long-term correctness over short-term convenience.
+Project Tick operates through a structured multi-organization model on GitHub.
 
----
+Each organization has a defined role and trust boundary.
 
-## What We Build
+### 1. [Project Tick](https://github.com/Project-Tick) (Core)
 
-**ProjT Launcher** is the flagship project.
+The primary organization.
 
-It is a cross-platform launcher designed around strict architectural boundaries, reproducible builds, and maintainable workflows rather than feature churn.
+Contains:
 
-In addition, Project Tick hosts:
+* ProjT Launcher
+* Core repositories
+* Actively developed software
+* Entry point for contributors
 
-* infrastructure and tooling repositories
-* packaging and distribution tooling
-* policy and documentation projects (handbooks, guidelines)
-* supporting libraries maintained as controlled forks when necessary
+This is the canonical development surface.
 
-Every repository exists for a clear reason and follows the same standards.
+### 2. [Project Tick Infra](https://github.com/Project-Tick-Infra)
 
----
+Infrastructure and operational tooling.
 
-## Core Principles
+Contains:
 
-* Long-term maintenance is more important than short-term velocity
-* Architecture and boundaries are enforced, not implied
-* Automation and CI/CD are first-class requirements
-* Reproducible builds are non-negotiable
-* Upstream projects, licenses, and contributor intent are respected
-* Decisions are documented and traceable
+* CI/CD pipelines
+* Automation systems
+* Build orchestration
+* Internal tooling
+* Runner configuration
 
-If a change cannot be justified long-term, it does not land.
+Infrastructure is versioned and reviewed like product code.
 
----
+### 3. [Project Tick Libraries](https://github.com/Project-Tick-Libraries)
 
-## Contributions
+Maintained libraries and controlled forks.
 
-Project Tick is open to contributions, but not permissive by default.
+Contains:
 
-* Pull requests are required
-* DCO / Signed-off-by is mandatory
-* Reviews focus on correctness, maintainability, and architectural impact
-* Not every contribution will be accepted
+* Long-term maintained forks
+* Internal reusable libraries
+* Stability-focused components
 
-Feedback is technical, direct, and professional.
-We value sustainable codebases over fast merges.
+Libraries follow stricter compatibility guarantees.
 
----
+### 4. [Project Tick Packages](https://github.com/Project-Tick-Packages)
 
-## Infrastructure & Packaging
+Packaging and distribution layer.
 
-Infrastructure is treated as part of the product.
+Contains:
 
-* CI/CD is required, not optional
-* Linux, Windows, and macOS are supported deliberately
-* Packaging considerations start early, not after the fact
-* Reproducibility and determinism are core goals
+* Packaging definitions
+* Build manifests
+* Reproducibility tooling
+* Cross-distro support artifacts
 
-Nix and Flatpak are common reference ecosystems, not afterthoughts.
+Packaging is not an afterthought — it is part of design.
 
----
+### 5. [Project Tick Vendored](https://github.com/Project-Tick-Vendored)
+
+Mirror-only organization.
+
+Contains:
+
+* Third-party code snapshots
+* Controlled upstream mirrors
+* Audit references
+
+This organization is read-only and does not accept direct development contributions.
+
+It exists to ensure transparency and traceability of external dependencies.
+
+### 6. [Project Tick Governance](https://github.com/Project-Tick-Governance)
+
+Policy and project-level documentation.
+
+Contains:
+
+* Contributor guidelines
+* Review standards
+* License documents
+* Architectural decision records
+* Long-term project charter
+
+Governance is versioned, not implied.
+
+## Flagship Project
+
+### ProjT Launcher
+
+A cross-platform launcher designed with:
+
+* strict architectural boundaries
+* explicit subsystem separation
+* reproducible builds
+* enforced CI validation
+* long-term maintainability as a first-class requirement
+
+Feature churn is not a goal. Structural integrity is.
+
+## Core Engineering Principles
+
+* Long-term maintenance over short-term momentum
+* Architectural constraints are enforced, not optional
+* CI/CD is mandatory for all active repositories
+* Deterministic builds are required
+* Decisions must be documented
+* Dependencies must be auditable
+* Upstream licenses and contributor intent are respected
+
+If a change cannot justify its long-term cost, it does not land.
+
+## Engineering Identity
+
+Project Tick is defined by engineering discipline rather than feature velocity.
+
+We operate under the assumption that:
+
+* entropy is the default state of software
+* architecture decays unless actively enforced
+* infrastructure rots without ownership
+* undocumented decisions become technical debt
+
+Project Tick exists to resist that entropy.
+
+We prefer:
+
+* explicit constraints over implicit conventions
+* slow, deliberate architectural evolution over reactive change
+* deterministic systems over convenience abstractions
+* documented trade-offs over silent compromises
+
+Software is treated as infrastructure, not experimentation.
+
+Changes are evaluated not only for correctness, but for their long-term structural impact.
+
+We do not optimize for hype cycles.
+We optimize for longevity.
+
+## Contribution Model
+
+Project Tick is open, but disciplined.
+
+* Pull requests required
+* DCO / Signed-off-by mandatory
+* Reviews evaluate architectural impact
+* Backward compatibility is deliberate, not assumed
+* Not all contributions will be accepted
+
+The bar is technical, not social.
+
+## Infrastructure Philosophy
+
+Infrastructure is part of the product.
+
+* CI failures block merges
+* Multi-platform support is deliberate
+* Packaging constraints influence design
+* Reproducibility is verified continuously
+
+Automation is not optional.
 
 ## Licensing
 
-Each repository is licensed individually.
+Each repository declares its license explicitly.
 
-We favor GPL-compatible open-source licenses and expect contributors to respect both the letter and the intent of those licenses.
+We prefer GPL-compatible licenses and expect contributors to respect:
 
----
+* the legal framework
+* the intent of upstream projects
+* long-term compatibility obligations
 
-## Scope and Expectations
+## Scope
 
-Project Tick is **not** a general-purpose platform and does not aim to move fast at the cost of stability.
+Project Tick builds fewer things — and maintains them properly.
 
-We build fewer things, but we maintain them properly.
+We do not optimize for rapid feature expansion.
+We optimize for stability, clarity, and sustainability.
 
----
+## Canonical Source & Mirrors
+
+Project Tick development occurs on GitHub.
+
+Backup and archival strategies exist to ensure long-term independence from any single hosting provider.
 
 ## Contact
 
-Technical discussion happens through issues and pull requests.
-Decisions, changes, and rationale are expected to be public and reviewable.
+Technical discussion occurs via issues and pull requests.
+
+All major decisions are expected to be documented and reviewable.
